@@ -2,6 +2,7 @@ import "../styles/App.css";
 import Footer from "./Footer";
 import Header from "./Header";
 import StartPage from "./StartPage";
+import Result from "./Result";
 import { Switch, Route } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route path="/impressum">
             <div>impressum</div>
+          </Route>
+          <Route path="/tours/:id">
+            <Result />
           </Route>
           <Route path="/">
             <StartPage />

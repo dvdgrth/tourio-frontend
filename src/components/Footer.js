@@ -1,12 +1,13 @@
 import React from "react";
 import "../styles/Footer.css";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <div className="footer-grid">
       <div>
-        <a href="/">About</a>
-        <a href="/">Impressum</a>
+        <Link to="/about">About</Link>
+        <Link to="/impressum">Impressum</Link>
       </div>
     </div>
   );

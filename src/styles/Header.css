@@ -12,3 +12,7 @@
 .header-grid-right {
   justify-self: right;
 }
+
+.header-grid-right a {
+  margin: 0 10px;
+}

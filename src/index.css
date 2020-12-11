@@ -1,6 +1,7 @@
 :root {
   --border-color: #797979;
   --hover-color: rgb(235, 235, 235);
+  --hover-color-dark: rgb(212, 212, 212);
 }
 
 * {
