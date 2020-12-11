@@ -1,0 +1,9 @@
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* border-bottom: 1px solid var(--border-color); */
+  padding: 10px;
+  justify-items: right;
+  border-top: 1px solid var(--border-color);
+  /* justify-self: end; */
+}

@@ -1,0 +1,14 @@
+.header-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* border-bottom: 1px solid var(--border-color); */
+  padding: 10px;
+}
+
+.header-grid-left {
+  justify-self: left;
+}
+
+.header-grid-right {
+  justify-self: right;
+}

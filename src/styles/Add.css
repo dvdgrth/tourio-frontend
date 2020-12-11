@@ -1,0 +1,16 @@
+.add-container {
+  text-align: center;
+  margin: 10px;
+}
+
+.add-container button {
+  /* padding: 30px 20px; */
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.add-container button:hover {
+  background-color: var(--hover-color);
+}
