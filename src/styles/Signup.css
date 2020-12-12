@@ -1,0 +1,28 @@
+.signup-container {
+  /* max-width: 800px;
+  margin: auto; */
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+}
+
+.signup-grid {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  width: 600px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.signup-grid input,
+.signup-grid button {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.signup-grid button:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+}

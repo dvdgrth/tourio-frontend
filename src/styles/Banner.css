@@ -3,7 +3,8 @@
   font-size: 12px;
   font-weight: normal;
   /* margin: 40px; */
-  align-self: center;
+  /* align-self: flex-end; */
+  align-self: flex-end;
   justify-self: center;
 }
 

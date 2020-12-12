@@ -25,7 +25,7 @@ export default function Result() {
       <ResultHeader data={data} setTab={setTab} />
       <div className="result-grid">
         <ResultNav data={data} tab={tab} setTab={setTab} />
-        <ResultContent data={data} tab={tab} />
+        <ResultContent data={data} tab={tab} setTab={setTab} />
       </div>
     </div>
   );
@@ -59,7 +59,7 @@ function ResultNav({ data, tab, setTab }) {
   return (
     <div className="link-grid">
       <div
-        className={tab === -1 && "link-selected"}
+        className={tab === -1 ? "link-selected" : ""}
         onClick={handleClick.bind(-1)}
       >
         <div className="tour-summary">{data.title}</div>
@@ -67,8 +67,8 @@ function ResultNav({ data, tab, setTab }) {
       </div>
 
       {data.links.map((el, i) => (
-        <div className={tab === i && "link-selected"}>
-          <div className="link-name" key={i} onClick={handleClick.bind(i)}>
+        <div className={tab === i ? "link-selected" : ""} key={i}>
+          <div className="link-name" onClick={handleClick.bind(i)}>
             {el.link}
           </div>
           <a
@@ -85,7 +85,7 @@ function ResultNav({ data, tab, setTab }) {
   );
 }
 
-function ResultContent({ data, tab }) {
+function ResultContent({ data, tab, setTab }) {
   function selectedTabContent() {
     if (tab === -1) {
       return data.summary;
@@ -94,5 +94,42 @@ function ResultContent({ data, tab }) {
     }
   }
 
-  return <div className="result-content-grid">{selectedTabContent()}</div>;
+  function navPrevClicked(e) {
+    setTab(tab - 1);
+  }
+  function navNextClicked(e) {
+    setTab(tab + 1);
+  }
+
+  return (
+    <div className="result-content-grid">
+      <div className="result-content">{selectedTabContent()}</div>
+      {tab !== -1 && (
+        <a
+          href={data.links[tab].link}
+          target="_blank"
+          rel="noreferrer"
+          className="external-link-button"
+        >
+          {data.links[tab].link}
+        </a>
+      )}
+      <div className="result-nav-container">
+        <button
+          className="result-nav-button"
+          onClick={navPrevClicked}
+          disabled={tab <= -1}
+        >
+          {"<"}
+        </button>
+        <button
+          className="result-nav-button"
+          onClick={navNextClicked}
+          disabled={tab >= data.links.length - 1}
+        >
+          {">"}
+        </button>
+      </div>
+    </div>
+  );
 }

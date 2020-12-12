@@ -16,3 +16,64 @@
 .header-grid-right a {
   margin: 0 10px;
 }
+
+/* The dropdown container */
+.profile-dropdown {
+  /* float: left; */
+  overflow: hidden;
+  /* background: var(--hover-color); */
+  cursor: pointer;
+}
+
+/* Dropdown button */
+.profile-dropdown .profile-dropbtn {
+  /* background: var(--hover-color); */
+  /* font-size: 16px; */
+  border: 1px solid var(--border-color);
+  /* outline: none; */
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 10px 16px;
+  background-color: transparent;
+}
+
+/* Add a red background color to navbar links on hover */
+.profile-dropdown:hover .profile-dropbtn {
+  background-color: var(--hover-color);
+}
+
+/* Dropdown content (hidden by default) */
+.profile-dropdown-content {
+  display: none;
+  position: absolute;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  /* right: 10px; */
+  /* min-width: 160px; */
+}
+
+/* Links inside the dropdown */
+.profile-dropdown-content * {
+  /* float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left; */
+  padding: 10px 16px;
+  border: 1px solid var(--border-color);
+  margin-top: -1px;
+  display: block;
+  margin: 0;
+}
+
+.profile-dropdown-content *:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+}
+
+/* Show the dropdown menu on hover */
+.profile-dropdown:hover .profile-dropdown-content {
+  display: block;
+}

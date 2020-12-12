@@ -4,6 +4,10 @@ import Header from "./Header";
 import StartPage from "./StartPage";
 import Result from "./Result";
 import { Switch, Route } from "react-router-dom";
+import Login from "./Login";
+import Account from "./Account.js";
+import Signup from "./Signup";
+import New from "./New";
 
 function App() {
   return (
@@ -13,6 +17,15 @@ function App() {
       </header>
       <main>
         <Switch>
+          <Route path="/account">
+            <Account />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
           <Route path="/about">
             <div>about</div>
           </Route>
@@ -21,6 +34,9 @@ function App() {
           </Route>
           <Route path="/tours/:id">
             <Result />
+          </Route>
+          <Route path="/new">
+            <New />
           </Route>
           <Route path="/">
             <StartPage />

@@ -21,7 +21,9 @@ export default function StartPageWithSearch() {
   return (
     <div>
       <div className="searchbar-add-row">
-        <SearchBar />
+        <SearchBar
+          initialValue={new URLSearchParams(location.search).get("q")}
+        />
         <Add />
       </div>
 
