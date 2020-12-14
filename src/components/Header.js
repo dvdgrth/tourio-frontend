@@ -20,11 +20,15 @@ export default function Header() {
         </div>
         <div className="header-grid-right">
           <div className="profile-dropdown">
-            <button className="profile-dropbtn">Profile</button>
-            <div className="profile-dropdown-content">
-              <Link to="/account/links">My links</Link>
+            <button className="profile-dropdown-button">Profile</button>
+            <div className="profile-dropdown-menu">
+              {/* <button> */}
+              <Link to={`/users/${auth.user["sub"]}`}>My links</Link>
+              {/* </button> */}
+              {/* <button> */}
               <Link to="/account">My account</Link>
-              <button onClick={logoutClicked}>Logout</button>
+              {/* </button> */}
+              <span onClick={logoutClicked}>Logout</span>
             </div>
           </div>
         </div>
@@ -37,8 +41,12 @@ export default function Header() {
           <Link to="/">MyLinkYourLink</Link>
         </div>
         <div className="header-grid-right">
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign up</Link>
+          <Link to="/login" className="login-signup-link">
+            Login
+          </Link>
+          <Link to="/signup" className="login-signup-link">
+            Sign up
+          </Link>
         </div>
       </div>
     );

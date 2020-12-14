@@ -21,9 +21,11 @@ function useProvideAuth() {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
 
+  // useEffect(() => {}, [token]);
+
   useEffect(() => {
     if (!user && localStorage.getItem("user")) {
-      setUser(localStorage.getItem("user"));
+      setUser(JSON.parse(localStorage.getItem("user")));
     }
   }, [user, setUser]);
 
@@ -96,6 +98,7 @@ function useProvideAuth() {
         const decodedToken = jwt.decode(t);
         setUser(decodedToken);
         localStorage.setItem("user", JSON.stringify(decodedToken));
+        await new Promise((r) => setTimeout(r, 1));
         return true;
       } else {
         return false;
@@ -116,7 +119,7 @@ function useProvideAuth() {
         newToken = await res.text();
         console.log(newToken);
         setToken(newToken);
-        return true;
+        return newToken;
       } else {
         return false;
       }

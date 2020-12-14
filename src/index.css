@@ -45,3 +45,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+textarea {
+  resize: vertical;
+}

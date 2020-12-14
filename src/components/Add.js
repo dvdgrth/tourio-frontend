@@ -9,7 +9,7 @@ export default function Add() {
   const auth = useAuth();
 
   function addButtonClicked(e) {
-    if (auth.user && auth.user) {
+    if (auth.user) {
       setModal(false);
       history.push("/new");
     } else {

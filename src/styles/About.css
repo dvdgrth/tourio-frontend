@@ -1,0 +1,7 @@
+.about-grid {
+  display: grid;
+  /* justify-items: center; */
+  /* align-items: center; */
+  max-width: 900px;
+  margin: 0 auto;
+}

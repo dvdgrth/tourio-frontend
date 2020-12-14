@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Signup.css";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth";
 
 export default function Signup() {
@@ -8,7 +8,6 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const history = useHistory();
   const auth = useAuth();
 
   function usernameChanged(e) {

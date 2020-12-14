@@ -8,6 +8,8 @@ import Login from "./Login";
 import Account from "./Account.js";
 import Signup from "./Signup";
 import New from "./New";
+import User from "./User";
+import About from "./About";
 
 function App() {
   return (
@@ -27,13 +29,16 @@ function App() {
             <Signup />
           </Route>
           <Route path="/about">
-            <div>about</div>
+            <About />
           </Route>
           <Route path="/impressum">
             <div>impressum</div>
           </Route>
           <Route path="/tours/:id">
             <Result />
+          </Route>
+          <Route path="/users/:id">
+            <User />
           </Route>
           <Route path="/new">
             <New />

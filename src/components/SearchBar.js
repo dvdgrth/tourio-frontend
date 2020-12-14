@@ -8,7 +8,6 @@ export default function SearchBar({ initialValue }) {
 
   function searchFormSubmitted(e) {
     e.preventDefault();
-    console.log(e);
     history.push(`/?q=${query}`);
   }
 
