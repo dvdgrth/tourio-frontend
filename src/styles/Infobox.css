@@ -1,0 +1,12 @@
+.infobox {
+  /* color: yellow; */
+  /* width: 100%; */
+  background-color: rgb(196, 196, 132);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  margin-top: 5px;
+  /* border-radius: 20px; */
+  text-align: center;
+  /* border-left: 3px solid rgb(230, 230, 0);
+  border-right: 3px solid rgb(230, 230, 0); */
+}

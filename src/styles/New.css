@@ -1,14 +1,22 @@
 .new-container {
   display: grid;
   justify-items: center;
-  /* align-items: center; */
-  height: 100%;
+  align-items: center;
+  /* height: 100%; */
   /* margin-bottom: 10px; */
+  /* margin: 0 auto; */
+}
+
+.new-container > div {
+  max-width: 1000px;
+  min-width: 700px;
+  margin: 0 auto;
 }
 
 .new-grid {
   display: grid;
-  min-width: 700px;
+  /* min-width: 700px; */
+  /* max-width: 1000px; */
   gap: 12px;
 }
 

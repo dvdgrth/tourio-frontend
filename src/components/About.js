@@ -9,8 +9,9 @@ export default function About() {
         MyLinkYourLink is a search engine which outputs links submitted by
         users. When submitting links we ask you to describe them and describe
         the overall theme and intend of the new entry. This way others can
-        decide if it sounds interesting to them. Also, they are guided by your
-        descriptions and may appreciate the added context and personal approach.
+        decide if it sounds interesting to them. And if they have a look at your
+        links, they are guided by your descriptions and may appreciate the added
+        context and personal approach.
       </p>
       <p>
         Existing search engines are amazing - for certain tasks, like getting
@@ -38,6 +39,8 @@ export default function About() {
         that
       </p>
       <p>TOUR mit comments. Reise durchs web</p>
+      <p>not direct competitor existing search engines but complenentary</p>
+      <p>Hitchhikers Gzuide to the web</p>
     </div>
   );
 }

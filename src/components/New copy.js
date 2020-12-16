@@ -1,106 +1,81 @@
 import React, { useState } from "react";
 import { useAuth } from "../hooks/use-auth.js";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/New.css";
-import { useFetch } from "../hooks/useFetch.js";
-import Infobox from "./Infobox.js";
 
 export default function New() {
   const auth = useAuth();
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [links, setLinks] = useState([{ link: "", description: "" }]);
-  const fetcher = useFetch();
-  const history = useHistory();
-  const [loading, setLoading] = useState(false);
-  const [msg, setMsg] = useState("");
 
   async function addFormSubmitted(e) {
     e.preventDefault();
-    setLoading(true);
-
-    let response = await fetcher.fetchWithToken("http://localhost:4000/tours", {
+    let token = auth.token;
+    if (!token) {
+      console.log("need to refresh token...");
+      token = await auth.refresh();
+      if (!token) {
+        console.log("refresh failed");
+        //TODO: probably retry or logout/ask to login again
+        return;
+      }
+      console.log("refresh successful, new token:");
+      console.log(token);
+    }
+    let data = {
       title: title,
-      author: auth.user["sub"],
+      // author: auth.user["sub"],
       summary: summary,
       links: links,
-    });
-    if (response.ok) {
-      const responseBody = await response.json();
-      const id = responseBody._id;
-      setLoading(false);
-      history.push(`/tours/${id}`);
-    } else {
-      const responseBody = await response.json();
-      setLoading(false);
-      setMsg("Submit failed:\n" + JSON.stringify(responseBody));
+    };
+    try {
+      const response = await fetch("http://localhost:4000/tours", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: "Bearer " + auth.token,
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify(data),
+      });
+      const responseText = await response.text();
+      if (response.ok) {
+        console.log("success");
+        console.log(responseText);
+        // history
+      } else {
+        // Try refreshing the token
+        console.log("need to refresh token...");
+        token = await auth.refresh();
+        if (!token) {
+          console.log("failed");
+          console.log(responseText);
+        } else {
+          // try one more
+          const response = await fetch("http://localhost:4000/tours", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              // Authorization: "Bearer " + auth.token,
+              Authorization: "Bearer " + token,
+            },
+            body: JSON.stringify(data),
+          });
+          const responseText = await response.text();
+          if (response.ok) {
+            console.log("success");
+            console.log(responseText);
+          } else {
+            console.log("failed");
+            console.log(responseText);
+          }
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      return;
     }
-
-    // let token = auth.token;
-    // if (!token) {
-    //   console.log("need to refresh token...");
-    //   token = await auth.refresh();
-    //   if (!token) {
-    //     console.log("refresh failed");
-    //     //TODO: probably retry or logout/ask to login again
-    //     return;
-    //   }
-    //   console.log("refresh successful, new token:");
-    //   console.log(token);
-    // }
-    // let data = {
-    //   title: title,
-    //   author: auth.user["sub"],
-    //   summary: summary,
-    //   links: links,
-    // };
-    // try {
-    //   const response = await fetch("http://localhost:4000/tours", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       // Authorization: "Bearer " + auth.token,
-    //       Authorization: "Bearer " + token,
-    //     },
-    //     body: JSON.stringify(data),
-    //   });
-    //   const responseText = await response.text();
-    //   if (response.ok) {
-    //     console.log("success");
-    //     console.log(responseText);
-    //     // history
-    //   } else {
-    //     // Try refreshing the token
-    //     console.log("need to refresh token...");
-    //     token = await auth.refresh();
-    //     if (!token) {
-    //       console.log("failed");
-    //       console.log(responseText);
-    //     } else {
-    //       // try one more
-    //       const response = await fetch("http://localhost:4000/tours", {
-    //         method: "POST",
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //           // Authorization: "Bearer " + auth.token,
-    //           Authorization: "Bearer " + token,
-    //         },
-    //         body: JSON.stringify(data),
-    //       });
-    //       const responseText = await response.text();
-    //       if (response.ok) {
-    //         console.log("success");
-    //         console.log(responseText);
-    //       } else {
-    //         console.log("failed");
-    //         console.log(responseText);
-    //       }
-    //     }
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    //   return;
-    // }
   }
 
   function titleChanged(e) {
@@ -231,15 +206,10 @@ export default function New() {
               onClick={addClick}
               className="new-add-link-button"
             />
-            <button
-              type="submit"
-              className="new-add-submit-button"
-              disabled={loading}
-            >
-              {loading ? "loading..." : "Submit"}
+            <button type="submit" className="new-add-submit-button">
+              Submit
             </button>
           </form>
-          {msg && <Infobox msg={msg} />}
         </div>
       </div>
     );

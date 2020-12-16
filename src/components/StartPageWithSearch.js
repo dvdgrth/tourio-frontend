@@ -31,6 +31,9 @@ export default function StartPageWithSearch() {
         {data
           ? data.map((item) => <ResultTile data={item} key={item._id} />)
           : "loading"}
+        {!data || !data.length
+          ? "unfortunately, there aren't any entries yet that match your search. TODO: add 2 options: add new entry OR show random entries."
+          : ""}
       </div>
     </div>
   );

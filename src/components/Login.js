@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/Login.css";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth";
+import Infobox from "./Infobox";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -87,7 +88,8 @@ export default function Login() {
         />
 
         <button type="submit">Login</button>
-        {message && <div>{message}</div>}
+        {/* {message && <div>{message}</div>} */}
+        {message && <Infobox msg={message} />}
       </form>
     </div>
   );

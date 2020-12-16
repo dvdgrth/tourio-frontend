@@ -2,6 +2,8 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import "../styles/Result.css";
 import { useAuth } from "../hooks/use-auth";
+import Infobox from "./Infobox";
+import { useFetch } from "../hooks/useFetch";
 
 export default function Result() {
   const { id } = useParams();
@@ -61,6 +63,7 @@ function ResultHeader({ data, setTab }) {
   const [userRatingValue, setUserRatingValue] = useState();
   const history = useHistory();
   const [msg, setMsg] = useState("");
+  const fetcher = useFetch();
 
   useEffect(() => {
     if (!auth.user) {
@@ -78,62 +81,72 @@ function ResultHeader({ data, setTab }) {
     console.log(e.target.dataset.rating);
 
     if (!auth.user) {
-      // alert("You must be logged in to rate.");
       setMsg("You must be logged in to vote.");
       return;
     }
 
-    // let userRating = data.ratings.find(
-    //   (rating) => rating.author._id === auth.user["sub"]
-    // );
-    // if (userRating) {
-    //   alert("You already voted");
-    //   return;
+    const response = await fetcher.fetchWithToken(
+      "http://localhost:4000/tours/ratings",
+      {
+        rating: e.target.dataset.rating,
+        tour: data._id,
+      }
+    );
+
+    if (response.ok) {
+      const responseBody = await response.json();
+      // setLoading(false);
+      history.go(0);
+    } else {
+      const responseBody = await response.json();
+      // setLoading(false);
+      setMsg("Rating failed:\n" + JSON.stringify(responseBody));
+    }
+
+    // let token = auth.token;
+    // if (!token) {
+    //   console.log("need to refresh token...");
+    //   token = await auth.refresh();
+    //   if (!token) {
+    //     console.log("refresh failed");
+    //     console.log(token);
+    //     //TODO: probably retry or logout/ask to login again
+    //     return;
+    //   }
+    //   console.log("refresh successful, new token:");
+    //   console.log(token);
     // }
 
-    let token = auth.token;
-    if (!token) {
-      console.log("need to refresh token...");
-      token = await auth.refresh();
-      if (!token) {
-        console.log("refresh failed");
-        //TODO: probably retry or logout/ask to login again
-        return;
-      }
-      console.log("refresh successful, new token:");
-      console.log(token);
-    }
+    // let dataSend = {
+    //   // author: auth.user["sub"],
+    //   rating: e.target.dataset.rating,
+    //   tour: data._id,
+    // };
 
-    let dataSend = {
-      author: auth.user["sub"],
-      rating: e.target.dataset.rating,
-      tour: data._id,
-    };
-
-    try {
-      const response = await fetch("http://localhost:4000/tours/ratings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // Authorization: "Bearer " + auth.token,
-          Authorization: "Bearer " + token,
-        },
-        body: JSON.stringify(dataSend),
-      });
-      const responseText = await response.text();
-      if (response.ok) {
-        console.log("success");
-        console.log(responseText);
-        history.go(0);
-        // history
-      } else {
-        console.log("failed");
-        console.log(responseText);
-      }
-    } catch (error) {
-      console.log(error);
-      return;
-    }
+    // try {
+    //   const response = await fetch("http://localhost:4000/tours/ratings", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       // Authorization: "Bearer " + auth.token,
+    //       Authorization: "Bearer " + token,
+    //     },
+    //     body: JSON.stringify(dataSend),
+    //   });
+    //   const responseText = await response.json();
+    //   if (response.ok) {
+    //     console.log("success");
+    //     console.log(responseText);
+    //     history.go(0);
+    //     // history
+    //   } else {
+    //     console.log("failed");
+    //     console.log(responseText);
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    //   return;
+    // }
   }
 
   function calculateRating(ratings) {
@@ -156,7 +169,7 @@ function ResultHeader({ data, setTab }) {
         <Link to={`/users/${data.author._id}`}>{data.author.username}</Link>
         <div>Created at:</div>
         <div>{new Date(data.createdAt).toLocaleDateString()}</div>
-        <div>Last Updated at:</div>
+        <div>Last updated at:</div>
         <div>{new Date(data.updatedAt).toLocaleDateString()}</div>
       </div>
       <div className="rating-container">
@@ -237,7 +250,8 @@ function ResultHeader({ data, setTab }) {
             10
           </div>
         </div>
-        <div>{msg}</div>
+        {msg && <Infobox msg={msg} />}
+        {/* <div>{msg}</div> */}
       </div>
     </div>
   );
