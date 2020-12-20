@@ -19,7 +19,10 @@ export default function Account() {
     return (
       <div>
         <div>{JSON.stringify(auth.user)}</div>
-        <div>Token: {auth.token ? auth.token : "not available"}</div>
+        <div>
+          Token:{" "}
+          {auth.token ? auth.token.substring(0, 8) + "..." : "not available"}
+        </div>
         <button onClick={refreshButtonClicked}>Refresh token</button>
       </div>
     );

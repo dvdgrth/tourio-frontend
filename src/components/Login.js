@@ -25,7 +25,8 @@ export default function Login() {
 
     try {
       if (await auth.login(username, password)) {
-        history.goBack();
+        history.push("/");
+        // history.goBack();
       } else {
         console.log("Login failed");
         setMessage("Login failed");
