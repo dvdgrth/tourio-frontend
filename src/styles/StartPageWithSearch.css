@@ -10,3 +10,15 @@
   display: grid;
   grid-template-columns: 1fr auto;
 }
+
+.show-all-button {
+  padding: 10px 20px;
+  background-color: white;
+  border: 1px solid var(--border-color);
+  margin: 10px 0;
+}
+
+.show-all-button:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+}

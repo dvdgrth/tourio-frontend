@@ -39,7 +39,8 @@
   grid-template-areas:
     "index index "
     "linkLabel link "
-    "descriptionLabel description ";
+    "descriptionLabel description "
+    "infobox infobox";
   /* "remove remove"; */
   grid-template-columns: auto 1fr;
   transition-duration: 200ms;
@@ -68,6 +69,10 @@
 
 .new-description-label {
   grid-area: descriptionLabel;
+}
+
+.infobox {
+  grid-area: infobox;
 }
 
 .new-link-input {

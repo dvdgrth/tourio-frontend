@@ -1,0 +1,7 @@
+.rating-widget {
+  padding: 2px;
+  border: 3px double var(--border-color);
+  display: inline;
+  /* background-color: aliceblue; */
+  font-weight: bold;
+}

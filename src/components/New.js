@@ -9,7 +9,9 @@ export default function New() {
   const auth = useAuth();
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
-  const [links, setLinks] = useState([{ link: "", description: "" }]);
+  const [links, setLinks] = useState([
+    { link: "", description: "", error: false },
+  ]);
   const fetcher = useFetch();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
@@ -17,103 +19,68 @@ export default function New() {
 
   async function addFormSubmitted(e) {
     e.preventDefault();
+
+    if (links.find((link) => link.error)) {
+      setMsg("Some links are not valid.");
+      // console.log("Links are not valid.");
+      return;
+    }
+
     setLoading(true);
 
-    let response = await fetcher.fetchWithToken("http://localhost:4000/tours", {
-      title: title,
-      author: auth.user["sub"],
-      summary: summary,
-      links: links,
-    });
+    // let response = await fetcher.fetchWithToken("http://localhost:4000/tours", {
+    let response = await fetcher.fetchWithToken(
+      "https://mylinkyourlink.herokuapp.com/tours",
+      {
+        title: title,
+        author: auth.user["sub"],
+        summary: summary,
+        links: links,
+      }
+    );
     if (response.ok) {
       const responseBody = await response.json();
       const id = responseBody._id;
       setLoading(false);
       history.push(`/tours/${id}`);
     } else {
-      const responseBody = await response.json();
-      setLoading(false);
-      setMsg("Submit failed:\n" + JSON.stringify(responseBody));
-    }
+      // console.log(response);
+      // let responseBody;
+      // try {
+      //   responseBody = await response.json();
+      // } catch (error) {
+      //   responseBody = await response.statusText;
+      // }
 
-    // let token = auth.token;
-    // if (!token) {
-    //   console.log("need to refresh token...");
-    //   token = await auth.refresh();
-    //   if (!token) {
-    //     console.log("refresh failed");
-    //     //TODO: probably retry or logout/ask to login again
-    //     return;
-    //   }
-    //   console.log("refresh successful, new token:");
-    //   console.log(token);
-    // }
-    // let data = {
-    //   title: title,
-    //   author: auth.user["sub"],
-    //   summary: summary,
-    //   links: links,
-    // };
-    // try {
-    //   const response = await fetch("http://localhost:4000/tours", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       // Authorization: "Bearer " + auth.token,
-    //       Authorization: "Bearer " + token,
-    //     },
-    //     body: JSON.stringify(data),
-    //   });
-    //   const responseText = await response.text();
-    //   if (response.ok) {
-    //     console.log("success");
-    //     console.log(responseText);
-    //     // history
-    //   } else {
-    //     // Try refreshing the token
-    //     console.log("need to refresh token...");
-    //     token = await auth.refresh();
-    //     if (!token) {
-    //       console.log("failed");
-    //       console.log(responseText);
-    //     } else {
-    //       // try one more
-    //       const response = await fetch("http://localhost:4000/tours", {
-    //         method: "POST",
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //           // Authorization: "Bearer " + auth.token,
-    //           Authorization: "Bearer " + token,
-    //         },
-    //         body: JSON.stringify(data),
-    //       });
-    //       const responseText = await response.text();
-    //       if (response.ok) {
-    //         console.log("success");
-    //         console.log(responseText);
-    //       } else {
-    //         console.log("failed");
-    //         console.log(responseText);
-    //       }
-    //     }
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    //   return;
-    // }
+      setLoading(false);
+      // setMsg("Submit failed:\n" + JSON.stringify(responseBody));
+      setMsg("Submit failed:\n");
+    }
   }
 
   function titleChanged(e) {
+    setMsg("");
     setTitle(e.target.value);
   }
   function summaryChanged(e) {
+    setMsg("");
     setSummary(e.target.value);
   }
 
   function handleChange(event) {
+    setMsg("");
     let l = [...links];
     if (event.target.name === "link") {
       l[this].link = event.target.value;
+      if (
+        !event.target.value.startsWith("http://") &&
+        !event.target.value.startsWith("https://") &&
+        event.target.value
+      ) {
+        l[this].error = true;
+      } else {
+        l[this].error = false;
+      }
     }
     if (event.target.name === "description") {
       l[this].description = event.target.value;
@@ -152,6 +119,7 @@ export default function New() {
           autoCapitalize="off"
           spellCheck="false"
         />
+        {el.error && <Infobox msg="Link must begin with http:// or https://" />}
         <label className="new-description-label">
           <b>Description</b>
         </label>

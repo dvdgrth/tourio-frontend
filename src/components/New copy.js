@@ -30,15 +30,19 @@ export default function New() {
       links: links,
     };
     try {
-      const response = await fetch("http://localhost:4000/tours", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // Authorization: "Bearer " + auth.token,
-          Authorization: "Bearer " + token,
-        },
-        body: JSON.stringify(data),
-      });
+      // const response = await fetch("http://localhost:4000/tours", {
+      const response = await fetch(
+        "https://mylinkyourlink.herokuapp.com/tours",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            // Authorization: "Bearer " + auth.token,
+            Authorization: "Bearer " + token,
+          },
+          body: JSON.stringify(data),
+        }
+      );
       const responseText = await response.text();
       if (response.ok) {
         console.log("success");

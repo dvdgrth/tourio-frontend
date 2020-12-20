@@ -11,12 +11,22 @@ export default function StartPageWithSearch() {
 
   useEffect(() => {
     async function getData(q) {
-      const res = await fetch(`http://localhost:4000/tours?q=${q}`);
+      // const res = await fetch(`http://localhost:4000/tours?q=${q}`);
+      const res = await fetch(
+        `https://mylinkyourlink.herokuapp.com/tours?q=${q}`
+      );
       const data = await res.json();
       setData(data);
     }
     getData(new URLSearchParams(location.search).get("q"));
   }, [location.search]);
+
+  async function getAll(e) {
+    // const res = await fetch(`http://localhost:4000/tours`);
+    const res = await fetch(`https://mylinkyourlink.herokuapp.com/tours`);
+    const data = await res.json();
+    setData(data);
+  }
 
   return (
     <div>
@@ -31,9 +41,16 @@ export default function StartPageWithSearch() {
         {data
           ? data.map((item) => <ResultTile data={item} key={item._id} />)
           : "loading"}
-        {!data || !data.length
-          ? "unfortunately, there aren't any entries yet that match your search. TODO: add 2 options: add new entry OR show random entries."
-          : ""}
+        {!data || !data.length ? (
+          <div>
+            <div>No matching results.</div>
+            <button onClick={getAll} className="show-all-button">
+              Show all available
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

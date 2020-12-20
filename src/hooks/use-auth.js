@@ -54,18 +54,23 @@ function useProvideAuth() {
 
   const signup = async (username, password, email) => {
     try {
-      const response = await fetch("http://localhost:4000/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          username: username,
-          password: password,
-          email: email,
-        }),
-      });
+      const response = await fetch(
+        "https://mylinkyourlink.herokuapp.com/signup",
+        {
+          // const response = await fetch("http://localhost:4000/signup", {
+
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            username: username,
+            password: password,
+            email: email,
+          }),
+        }
+      );
       if (response.ok) {
         const r = await response.json();
         console.log(r);
@@ -81,17 +86,22 @@ function useProvideAuth() {
 
   const login = async (username, password) => {
     try {
-      const response = await fetch("http://localhost:4000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      });
+      const response = await fetch(
+        "https://mylinkyourlink.herokuapp.com/login",
+        {
+          // const response = await fetch("http://localhost:4000/login", {
+
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            username: username,
+            password: password,
+          }),
+        }
+      );
       if (response.ok) {
         let t = await response.json();
         t = t.token;
@@ -111,7 +121,8 @@ function useProvideAuth() {
 
   const refresh = async () => {
     try {
-      const res = await fetch(`http://localhost:4000/refresh`, {
+      // const res = await fetch(`http://localhost:4000/refresh`, {
+      const res = await fetch(`https://mylinkyourlink.herokuapp.com/refresh`, {
         credentials: "include",
       });
       console.log(res);

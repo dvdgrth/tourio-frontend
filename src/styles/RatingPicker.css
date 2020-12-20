@@ -1,0 +1,25 @@
+.rating-picker-range {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 10px;
+  border: 1px solid var(--border-color);
+  gap: 1px;
+}
+
+.rating-picker-range > div {
+  /* height: 10px;
+  width: 10px; */
+  cursor: pointer;
+}
+
+.rating-picker-range > div:hover {
+  /* background-color: var(--hover-color); */
+}
+
+.rating-picker-selected {
+  background-color: var(--border-color-dark);
+}
+
+.rating-picker-mouseover {
+  background-color: var(--hover-color-dark);
+}
