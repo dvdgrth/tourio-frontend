@@ -123,6 +123,7 @@ function useProvideAuth() {
     try {
       // const res = await fetch(`http://localhost:4000/refresh`, {
       const res = await fetch(`https://mylinkyourlink.herokuapp.com/refresh`, {
+        method: "POST",
         credentials: "include",
       });
       console.log(res);
