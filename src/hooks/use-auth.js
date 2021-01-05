@@ -55,7 +55,10 @@ function useProvideAuth() {
   const signup = async (username, password, email) => {
     try {
       const response = await fetch(
-        "https://mylinkyourlink.herokuapp.com/signup",
+        // "https://mylinkyourlink.herokuapp.com/signup",
+
+        (process.env.REACT_APP_DEV_SERVER ||
+          "https://mylinkyourlink.herokuapp.com") + "/signup",
         {
           // const response = await fetch("http://localhost:4000/signup", {
 
@@ -87,7 +90,9 @@ function useProvideAuth() {
   const login = async (username, password) => {
     try {
       const response = await fetch(
-        "https://mylinkyourlink.herokuapp.com/login",
+        // "https://mylinkyourlink.herokuapp.com/login",
+        (process.env.REACT_APP_DEV_SERVER ||
+          "https://mylinkyourlink.herokuapp.com") + "/login",
         {
           // const response = await fetch("http://localhost:4000/login", {
 
@@ -122,10 +127,15 @@ function useProvideAuth() {
   const refresh = async () => {
     try {
       // const res = await fetch(`http://localhost:4000/refresh`, {
-      const res = await fetch(`https://mylinkyourlink.herokuapp.com/refresh`, {
-        method: "POST",
-        credentials: "include",
-      });
+      // const res = await fetch(`https://mylinkyourlink.herokuapp.com/refresh`, {
+      const res = await fetch(
+        (process.env.REACT_APP_DEV_SERVER ||
+          "https://mylinkyourlink.herokuapp.com") + "/refresh",
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
       console.log(res);
       let newToken;
       if (res.ok) {

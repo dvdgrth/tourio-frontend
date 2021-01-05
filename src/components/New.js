@@ -30,7 +30,10 @@ export default function New() {
 
     // let response = await fetcher.fetchWithToken("http://localhost:4000/tours", {
     let response = await fetcher.fetchWithToken(
-      "https://mylinkyourlink.herokuapp.com/tours",
+      // "https://mylinkyourlink.herokuapp.com/tours",
+
+      (process.env.REACT_APP_DEV_SERVER ||
+        "https://mylinkyourlink.herokuapp.com") + "/tours",
       {
         title: title,
         author: auth.user["sub"],

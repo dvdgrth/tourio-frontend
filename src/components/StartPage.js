@@ -10,7 +10,10 @@ import React from "react";
 export default function StartPage() {
   const location = useLocation();
 
-  if (new URLSearchParams(location.search).get("q")) {
+  if (
+    new URLSearchParams(location.search).get("q") ||
+    new URLSearchParams(location.search).get("all") === "true"
+  ) {
     return <StartPageWithSearch />;
   } else {
     return (

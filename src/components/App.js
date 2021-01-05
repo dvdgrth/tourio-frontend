@@ -10,8 +10,13 @@ import Signup from "./Signup";
 import New from "./New";
 import User from "./User";
 import About from "./About";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    document.title = "MyLinkYourLink";
+  }, []);
+
   return (
     <div className="App">
       <header>

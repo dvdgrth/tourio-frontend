@@ -38,8 +38,12 @@ export default function Result() {
 
   useEffect(() => {
     async function getData(q) {
+      // const res = await fetch(
+      //   `https://mylinkyourlink.herokuapp.com/tours/${q}`
+      // );
       const res = await fetch(
-        `https://mylinkyourlink.herokuapp.com/tours/${q}`
+        (process.env.REACT_APP_DEV_SERVER ||
+          "https://mylinkyourlink.herokuapp.com") + `/tours/${q}`
       );
       // const res = await fetch(`http://localhost:4000/tours/${q}`);
       const data = await res.json();
