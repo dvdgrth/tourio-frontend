@@ -10,9 +10,14 @@ export default function User() {
   useEffect(() => {
     async function getUser(q) {
       // const res = await fetch(`http://localhost:4000/users/${q}`);
+      // const res = await fetch(
+      //   `https://mylinkyourlink.herokuapp.com/users/${q}`
+      // );
       const res = await fetch(
-        `https://mylinkyourlink.herokuapp.com/users/${q}`
+        (process.env.REACT_APP_DEV_SERVER ||
+          "https://mylinkyourlink.herokuapp.com") + `/users/${q}`
       );
+
       const resJson = await res.json();
       console.log(resJson);
       if (res.ok) {

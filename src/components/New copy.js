@@ -32,7 +32,9 @@ export default function New() {
     try {
       // const response = await fetch("http://localhost:4000/tours", {
       const response = await fetch(
-        "https://mylinkyourlink.herokuapp.com/tours",
+        // "https://mylinkyourlink.herokuapp.com/tours",
+        (process.env.REACT_APP_DEV_SERVER ||
+          "https://mylinkyourlink.herokuapp.com") + "/tours",
         {
           method: "POST",
           headers: {
