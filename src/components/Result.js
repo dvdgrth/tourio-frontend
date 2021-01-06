@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import "../styles/Result.css";
 import { useAuth } from "../hooks/use-auth";
 // import Infobox from "./Infobox";
@@ -70,7 +70,7 @@ export default function Result() {
 function ResultHeader({ data, setTab }) {
   const auth = useAuth();
   const [userRatingValue, setUserRatingValue] = useState();
-  // const history = useHistory();
+  const history = useHistory();
   // const [msg, setMsg] = useState("");
   // const fetcher = useFetch();
 
@@ -116,6 +116,10 @@ function ResultHeader({ data, setTab }) {
   //     setMsg("Rating failed:\n" + JSON.stringify(responseBody));
   //   }
   // }
+
+  function editClicked(e) {
+    history.push(`/tours/${data._id}/edit`, { data });
+  }
 
   return (
     <div className="result-header">
@@ -211,6 +215,11 @@ function ResultHeader({ data, setTab }) {
         {/* {msg && <Infobox msg={msg} />} */}
         {/* <div>{msg}</div> */}
         <RatingPicker userRatingValue={userRatingValue} tourId={data._id} />
+        {auth.user && auth.user.sub === data.author._id && (
+          <button className="result-edit-button" onClick={editClicked}>
+            edit
+          </button>
+        )}
       </div>
     </div>
   );

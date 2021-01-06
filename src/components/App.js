@@ -39,6 +39,9 @@ function App() {
           <Route path="/impressum">
             <div>impressum</div>
           </Route>
+          <Route path="/tours/:id/edit">
+            <New />
+          </Route>
           <Route path="/tours/:id">
             <Result />
           </Route>

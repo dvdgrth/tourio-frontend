@@ -7,7 +7,7 @@
   height: 100%;
 }
 
-.login-grid {
+.login-form-grid {
   display: grid;
   gap: 20px;
   padding: 20px;
@@ -16,13 +16,13 @@
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.login-grid input,
-.login-grid button {
+.login-form-grid input,
+.login-form-grid button {
   padding: 10px;
   border: 1px solid var(--border-color);
 }
 
-.login-grid button:hover {
+.login-form-grid button:hover {
   background-color: var(--hover-color);
   cursor: pointer;
 }

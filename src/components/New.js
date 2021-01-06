@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../hooks/use-auth.js";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import "../styles/New.css";
 import { useFetch } from "../hooks/useFetch.js";
 import Infobox from "./Infobox.js";
@@ -16,6 +16,20 @@ export default function New() {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
+  const location = useLocation();
+  // const [data, setData] = useState();
+
+  useEffect(() => {
+    if (location.state && location.state.data) {
+      console.log(location.state.data);
+      // setData(location.state.data);
+      setTitle(location.state.data.title);
+      setSummary(location.state.data.summary);
+      setLinks(location.state.data.links);
+    } else {
+      console.log("no data");
+    }
+  }, [location.state]);
 
   async function addFormSubmitted(e) {
     e.preventDefault();
@@ -28,6 +42,9 @@ export default function New() {
 
     setLoading(true);
 
+    if (location.state && location.state.data) {
+    }
+
     // let response = await fetcher.fetchWithToken("http://localhost:4000/tours", {
     let response = await fetcher.fetchWithToken(
       // "https://mylinkyourlink.herokuapp.com/tours",
@@ -39,7 +56,8 @@ export default function New() {
         author: auth.user["sub"],
         summary: summary,
         links: links,
-      }
+      },
+      location.state && location.state.data ? "PUT" : "POST"
     );
     if (response.ok) {
       const responseBody = await response.json();
@@ -163,7 +181,12 @@ export default function New() {
     return (
       <div className="new-container">
         <div>
-          <h1>Add a new entry</h1>
+          {/* <h1>Add a new entry</h1> */}
+          <h1>
+            {location.state && location.state.data
+              ? "Edit entry"
+              : "Add a new entry"}
+          </h1>
           <form onSubmit={addFormSubmitted} className="new-grid">
             <label htmlFor="title">
               <b>Title</b>

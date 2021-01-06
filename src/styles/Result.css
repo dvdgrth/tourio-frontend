@@ -62,7 +62,7 @@
 .link-name {
   /* height: 25px;- */
   overflow: hidden;
-  padding: 10px;
+  padding: 0 10px;
 }
 
 .tour-summary {
@@ -247,4 +247,10 @@
 
 .result-rating-widget {
   text-align: right;
+}
+
+.result-edit-button {
+  padding: 4px 20px;
+  margin: 4px 0;
+  cursor: pointer;
 }

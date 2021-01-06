@@ -62,7 +62,7 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <form className="login-grid" onSubmit={loginFormSubmitted}>
+      <form className="login-form-grid" onSubmit={loginFormSubmitted}>
         <h1>Login</h1>
         <label htmlFor="username">
           <b>Username</b>
@@ -87,10 +87,10 @@ export default function Login() {
           value={password}
           onChange={passwordChanged}
         />
-
         <button type="submit">Login</button>
+
         {/* {message && <div>{message}</div>} */}
-        {message && <Infobox msg={message} />}
+        <div>{message && <Infobox msg={message} />}</div>
       </form>
     </div>
   );

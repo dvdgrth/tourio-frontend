@@ -4,7 +4,7 @@ export function useFetch() {
   const auth = useAuth();
   let token = auth.token;
 
-  const fetchWithToken = async (url, data) => {
+  const fetchWithToken = async (url, data, method = "POST") => {
     if (!token) {
       console.log("need to refresh token...");
       token = await auth.refresh();
@@ -19,7 +19,7 @@ export function useFetch() {
 
     try {
       const response = await fetch(url, {
-        method: "POST",
+        method: method,
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + token,
