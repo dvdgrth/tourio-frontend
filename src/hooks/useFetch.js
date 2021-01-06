@@ -44,7 +44,7 @@ export function useFetch() {
         } else {
           // try once more
           const response = await fetch(url, {
-            method: "POST",
+            method: method,
             headers: {
               "Content-Type": "application/json",
               Authorization: "Bearer " + token,
