@@ -50,7 +50,11 @@ export default function New() {
       // "https://mylinkyourlink.herokuapp.com/tours",
 
       (process.env.REACT_APP_DEV_SERVER ||
-        "https://mylinkyourlink.herokuapp.com") + "/tours",
+        "https://mylinkyourlink.herokuapp.com") +
+        "/tours" +
+        (location.state &&
+          location.state.data &&
+          `/${location.state.data._id}`),
       {
         title: title,
         author: auth.user["sub"],
