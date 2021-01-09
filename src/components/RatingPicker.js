@@ -22,7 +22,9 @@ export default function RatingPicker({ userRatingValue, tourId }) {
     }
 
     const response = await fetcher.fetchWithToken(
-      "https://mylinkyourlink.herokuapp.com/tours/ratings",
+      // "https://mylinkyourlink.herokuapp.com/tours/ratings",
+      (process.env.REACT_APP_DEV_SERVER ||
+        "https://mylinkyourlink.herokuapp.com") + "/tours/ratings",
       // "http://localhost:4000/tours/ratings",
       {
         rating: e.target.dataset.rating,

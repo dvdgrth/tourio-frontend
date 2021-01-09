@@ -17,17 +17,18 @@ export default function New() {
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
   const location = useLocation();
-  // const [data, setData] = useState();
+  const [data, setData] = useState(false);
 
   useEffect(() => {
     if (location.state && location.state.data) {
       console.log(location.state.data);
-      // setData(location.state.data);
+      setData(true);
       setTitle(location.state.data.title);
       setSummary(location.state.data.summary);
       setLinks(location.state.data.links);
     } else {
       console.log("no data");
+      setData(false);
     }
   }, [location.state]);
 
@@ -42,8 +43,10 @@ export default function New() {
 
     setLoading(true);
 
-    if (location.state && location.state.data) {
-    }
+    // let edit = false
+    // if (location.state && location.state.data && location.state.data._id) {
+    //   edit = true
+    // }
 
     // let response = await fetcher.fetchWithToken("http://localhost:4000/tours", {
     let response = await fetcher.fetchWithToken(
@@ -52,16 +55,14 @@ export default function New() {
       (process.env.REACT_APP_DEV_SERVER ||
         "https://mylinkyourlink.herokuapp.com") +
         "/tours" +
-        (location.state &&
-          location.state.data &&
-          `/${location.state.data._id}`),
+        (data ? `/${location.state.data._id}` : ""),
       {
         title: title,
         author: auth.user["sub"],
         summary: summary,
         links: links,
       },
-      location.state && location.state.data ? "PUT" : "POST"
+      data ? "PUT" : "POST"
     );
     if (response.ok) {
       const responseBody = await response.json();
