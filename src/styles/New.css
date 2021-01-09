@@ -123,3 +123,20 @@
 .new-add-submit-button {
   cursor: pointer;
 }
+
+.new-delete-button {
+  cursor: pointer;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+}
+
+.new-modal-button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.new-modal-button-grid > button {
+  padding: 4px 10px;
+  cursor: pointer;
+}

@@ -4,6 +4,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import "../styles/New.css";
 import { useFetch } from "../hooks/useFetch.js";
 import Infobox from "./Infobox.js";
+import Modal from "react-modal";
 
 export default function New() {
   const auth = useAuth();
@@ -18,6 +19,21 @@ export default function New() {
   const [msg, setMsg] = useState("");
   const location = useLocation();
   const [data, setData] = useState(false);
+  var subtitle;
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+  };
+  // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+  Modal.setAppElement("#root");
 
   useEffect(() => {
     if (location.state && location.state.data) {
@@ -124,6 +140,42 @@ export default function New() {
     setLinks(l);
   }
 
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    // subtitle.style.color = "#f00";
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  async function deleteClicked(e) {
+    if (!data) {
+      return;
+    }
+    let response = await fetcher.fetchWithToken(
+      (process.env.REACT_APP_DEV_SERVER ||
+        "https://mylinkyourlink.herokuapp.com") +
+        "/tours" +
+        `/${location.state.data._id}`,
+      {},
+      "DELETE"
+    );
+    if (response.ok) {
+      // const responseBody = await response.json();
+      // const id = responseBody._id;
+      setLoading(false);
+      history.push(`/`);
+    } else {
+      setLoading(false);
+      setMsg("Submit failed:\n");
+    }
+  }
+
   function createInputs() {
     return links.map((el, i) => (
       <div key={i} className="new-link-section">
@@ -187,11 +239,31 @@ export default function New() {
       <div className="new-container">
         <div>
           {/* <h1>Add a new entry</h1> */}
-          <h1>
-            {location.state && location.state.data
-              ? "Edit entry"
-              : "Add a new entry"}
-          </h1>
+          <h1>{data ? "Edit entry" : "Add a new entry"}</h1>
+          {data ? (
+            <button className="new-delete-button" onClick={openModal}>
+              Delete this entry
+            </button>
+          ) : (
+            ""
+          )}
+          <Modal
+            isOpen={modalIsOpen}
+            onAfterOpen={afterOpenModal}
+            onRequestClose={closeModal}
+            style={customStyles}
+            contentLabel="Example Modal"
+          >
+            <h2>Delete this entry?</h2>
+            <p>
+              This cannot be undone. <br />
+              Entry will be deleted permanently.
+            </p>
+            <div className="new-modal-button-grid">
+              <button onClick={closeModal}>No, cancel</button>
+              <button onClick={deleteClicked}>Yes, delete</button>
+            </div>
+          </Modal>
           <form onSubmit={addFormSubmitted} className="new-grid">
             <label htmlFor="title">
               <b>Title</b>
@@ -222,8 +294,8 @@ export default function New() {
               autoCapitalize="off"
               spellCheck="false"
             />
-
             {createInputs()}
+
             <input
               type="button"
               value="+ add more links"
