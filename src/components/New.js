@@ -19,7 +19,6 @@ export default function New() {
   const [msg, setMsg] = useState("");
   const location = useLocation();
   const [data, setData] = useState(false);
-  var subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const customStyles = {
