@@ -24,6 +24,9 @@ export default function ResultTile({ data }) {
         <div className="result-date">
           {new Date(data.updatedAt).toLocaleDateString()}
         </div>
+        <div className="result-tile-author-name">
+          <Link to={`/users/${data.author._id}`}>{data.author.username}</Link>
+        </div>
         <h2 className="result-title">{data.title}</h2>
         <div>{data.summary}</div>
 

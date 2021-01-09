@@ -7,7 +7,7 @@ export default function RatingWidget({ ratings }) {
       return "-";
     }
     if (!ratings.length) {
-      return "none";
+      return "-";
     }
     let sum = ratings.reduce((acc, rating) => {
       return acc + rating.value;
