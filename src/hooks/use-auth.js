@@ -77,13 +77,15 @@ function useProvideAuth() {
       if (response.ok) {
         const r = await response.json();
         console.log(r);
-        return true;
+        return { success: true, res: r };
       } else {
-        return false;
+        const r = await response.json();
+        console.log(r);
+        return { success: false, res: r };
       }
     } catch (error) {
       console.log(error);
-      return false;
+      return { success: false, res: error };
     }
   };
 

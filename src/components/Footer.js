@@ -7,6 +7,7 @@ export default function Footer() {
     <div className="footer-grid">
       <div>
         <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
         <Link to="/impressum">Impressum</Link>
       </div>
     </div>

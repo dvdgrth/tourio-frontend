@@ -37,10 +37,16 @@ export default function RatingPicker({ userRatingValue, tourId }) {
       // setLoading(false);
       history.go(0);
     } else {
+      try {
+        const responseBody = await response.json();
+        setMsg("Rating failed: " + JSON.stringify(responseBody));
+      } catch (error) {
+        setMsg("Rating failed.");
+      }
       console.log(response);
-      const responseBody = await response.json();
+      // const responseBody = await response.json();
       // setLoading(false);
-      setMsg("Rating failed:\n" + JSON.stringify(responseBody));
+      // setMsg("Rating failed:\n" + JSON.stringify(responseBody));
     }
   }
 
@@ -156,6 +162,7 @@ export default function RatingPicker({ userRatingValue, tourId }) {
         >
           {/* 10 */}
         </div>
+        {/* <div>rating</div> */}
       </div>
       {msg && <Infobox msg={msg} />}
     </div>

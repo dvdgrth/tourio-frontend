@@ -10,6 +10,7 @@ import Signup from "./Signup";
 import New from "./New";
 import User from "./User";
 import About from "./About";
+import Contact from "./Contact";
 import { useEffect } from "react";
 
 function App() {
@@ -36,8 +37,11 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
           <Route path="/impressum">
-            <div>impressum</div>
+            <div>impressum. coming soon...</div>
           </Route>
           <Route path="/tours/:id/edit">
             <New />

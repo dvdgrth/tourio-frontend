@@ -139,82 +139,9 @@ function ResultHeader({ data, setTab }) {
           <RatingWidget ratings={data.ratings} /> ({data.ratings.length}{" "}
           {data.ratings.length > 1 ? " votes" : " vote"})
         </div>
-        <div>Your rating:</div>
-        {/* <div className="rating-range">
-          <div
-            data-rating="1"
-            onClick={ratingClicked}
-            className={userRatingValue === 1 ? "user-rating-selected" : ""}
-          >
-            1
-          </div>
-          <div
-            data-rating="2"
-            onClick={ratingClicked}
-            className={userRatingValue === 2 ? "user-rating-selected" : ""}
-          >
-            2
-          </div>
-          <div
-            data-rating="3"
-            onClick={ratingClicked}
-            className={userRatingValue === 3 ? "user-rating-selected" : ""}
-          >
-            3
-          </div>
-          <div
-            data-rating="4"
-            onClick={ratingClicked}
-            className={userRatingValue === 4 ? "user-rating-selected" : ""}
-          >
-            4
-          </div>
-          <div
-            data-rating="5"
-            onClick={ratingClicked}
-            className={userRatingValue === 5 ? "user-rating-selected" : ""}
-          >
-            5
-          </div>
-          <div
-            data-rating="6"
-            onClick={ratingClicked}
-            className={userRatingValue === 6 ? "user-rating-selected" : ""}
-          >
-            6
-          </div>
-          <div
-            data-rating="7"
-            onClick={ratingClicked}
-            className={userRatingValue === 7 ? "user-rating-selected" : ""}
-          >
-            7
-          </div>
-          <div
-            data-rating="8"
-            onClick={ratingClicked}
-            className={userRatingValue === 8 ? "user-rating-selected" : ""}
-          >
-            8
-          </div>
-          <div
-            data-rating="9"
-            onClick={ratingClicked}
-            className={userRatingValue === 9 ? "user-rating-selected" : ""}
-          >
-            9
-          </div>
-          <div
-            data-rating="10"
-            onClick={ratingClicked}
-            className={userRatingValue === 10 ? "user-rating-selected" : ""}
-          >
-            10
-          </div>
-        </div> */}
-        {/* {msg && <Infobox msg={msg} />} */}
-        {/* <div>{msg}</div> */}
+        <div>Your rating: {userRatingValue}</div>
         <RatingPicker userRatingValue={userRatingValue} tourId={data._id} />
+
         {auth.user && auth.user.sub === data.author._id && (
           <button className="result-edit-button" onClick={editClicked}>
             edit

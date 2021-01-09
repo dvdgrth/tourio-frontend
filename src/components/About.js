@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/About.css";
 
 export default function About() {
@@ -60,7 +61,11 @@ export default function About() {
       </p>
       <p>
         Do you have any questions, comments or want to collaborate? Don't
-        hesitate to get in contact.
+        hesitate to get in{" "}
+        <Link to={`/contact`} style={{ color: "orange" }}>
+          contact
+        </Link>
+        .
       </p>
     </div>
   );
