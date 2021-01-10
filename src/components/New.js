@@ -140,6 +140,30 @@ export default function New() {
     setLinks(l);
   }
 
+  function upClicked() {
+    if (this <= 0) {
+      return;
+    }
+    let l = [...links];
+    const temp = l[this];
+    l[this] = l[this - 1];
+    l[this - 1] = temp;
+    // l.splice(this, 1);
+    setLinks(l);
+  }
+
+  function downClicked() {
+    if (this >= links.length - 1) {
+      return;
+    }
+    let l = [...links];
+    const temp = l[this];
+    l[this] = l[this + 1];
+    l[this + 1] = temp;
+    // l.splice(this, 1);
+    setLinks(l);
+  }
+
   function openModal() {
     setIsOpen(true);
   }
@@ -221,6 +245,12 @@ export default function New() {
         /> */}
         <div className="new-remove-x" onClick={removeClick.bind(i)}>
           x
+        </div>
+        <div className="new-down-arrow" onClick={downClicked.bind(i)}>
+          🠗
+        </div>
+        <div className="new-up-arrow" onClick={upClicked.bind(i)}>
+          🠕
         </div>
       </div>
     ));

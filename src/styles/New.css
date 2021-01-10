@@ -140,3 +140,28 @@
   padding: 4px 10px;
   cursor: pointer;
 }
+
+.new-up-arrow,
+.new-down-arrow {
+  /* float: right; */
+  position: absolute;
+  right: 41px;
+  top: 0px;
+  padding: 6px 16px;
+  font-size: 20px;
+  background-color: var(--hover-color-dark);
+  color: var(--border-color-dark);
+  cursor: pointer;
+}
+
+.new-up-arrow:hover,
+.new-down-arrow:hover {
+  background-color: var(--border-color);
+
+  color: white;
+  background-color: rgba(71, 157, 255, 0.616);
+}
+
+.new-down-arrow {
+  right: 82px;
+}
