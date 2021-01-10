@@ -29,3 +29,11 @@
   /* margin-bottom: 30px; */
   /* font-style: italic; */
 }
+
+.banner-title {
+  font-size: 70px;
+  /* color: rgb(58, 58, 58); */
+}
+.banner-logo {
+  height: 80px;
+}

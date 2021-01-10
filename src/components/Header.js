@@ -16,6 +16,7 @@ export default function Header() {
     return (
       <div className="header-grid">
         <div className="header-grid-left">
+          {/* <img src="logo.png" alt="logo" className="header-logo" /> */}
           <Link to="/" className="header-name-title">
             MyLinkYourLink
           </Link>
@@ -40,6 +41,7 @@ export default function Header() {
     return (
       <div className="header-grid">
         <div className="header-grid-left">
+          {/* <img src="logo.png" alt="logo" className="header-logo" /> */}
           <Link to="/" className="header-name-title">
             MyLinkYourLink
           </Link>
