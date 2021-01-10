@@ -22,9 +22,14 @@ export default function User() {
       console.log(resJson);
       if (res.ok) {
         setUser(resJson);
+        document.title = resJson.username + " - MyLinkYourLink User";
       }
     }
     getUser(id);
+
+    return () => {
+      document.title = "MyLinkYourLink";
+    };
   }, [id]);
 
   if (!user) {
