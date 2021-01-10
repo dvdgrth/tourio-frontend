@@ -3,6 +3,7 @@ import "../styles/Login.css";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth";
 import Infobox from "./Infobox";
+import Loading from "./Loading";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -10,6 +11,7 @@ export default function Login() {
   const [message, setMessage] = useState("");
   const history = useHistory();
   const auth = useAuth();
+  const [loading, setLoading] = useState(false);
 
   function usernameChanged(e) {
     setUsername(e.target.value);
@@ -20,14 +22,17 @@ export default function Login() {
   }
 
   async function loginFormSubmitted(e) {
+    setLoading(true);
     e.preventDefault();
     setMessage("");
 
     try {
       if (await auth.login(username, password)) {
+        setLoading(false);
         history.push("/");
         // history.goBack();
       } else {
+        setLoading(false);
         console.log("Login failed");
         setMessage("Login failed");
       }
@@ -87,7 +92,9 @@ export default function Login() {
           value={password}
           onChange={passwordChanged}
         />
-        <button type="submit">Login</button>
+        <button disabled={loading} type="submit">
+          {loading ? <Loading /> : "login"}
+        </button>
 
         {/* {message && <div>{message}</div>} */}
         <div>{message && <Infobox msg={message} />}</div>

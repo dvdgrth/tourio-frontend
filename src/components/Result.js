@@ -6,6 +6,7 @@ import { useAuth } from "../hooks/use-auth";
 // import { useFetch } from "../hooks/useFetch";
 import RatingWidget from "./RatingWidget";
 import RatingPicker from "./RatingPicker";
+import Loading from "./Loading";
 
 export default function Result() {
   const { id } = useParams();
@@ -53,7 +54,8 @@ export default function Result() {
   }, [id]);
 
   if (!data) {
-    return "loading";
+    // return "loading";
+    return <Loading />;
   }
 
   return (

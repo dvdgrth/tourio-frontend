@@ -4,6 +4,7 @@ import Add from "./Add";
 import SearchBar from "./SearchBar";
 import ResultTile from "./ResultTile";
 import "../styles/StartPageWithSearch.css";
+import Loading from "./Loading";
 
 export default function StartPageWithSearch() {
   const [data, setData] = useState();
@@ -28,6 +29,7 @@ export default function StartPageWithSearch() {
   // }, [location.search]);
 
   useEffect(() => {
+    setData();
     async function getData(q) {
       // const res = await fetch(`http://localhost:4000/tours?q=${q}`);
       // const res = await fetch(
@@ -85,9 +87,11 @@ export default function StartPageWithSearch() {
       </div>
 
       <div className="results-grid">
-        {data
-          ? data.map((item) => <ResultTile data={item} key={item._id} />)
-          : "loading"}
+        {data ? (
+          data.map((item) => <ResultTile data={item} key={item._id} />)
+        ) : (
+          <Loading />
+        )}
         {data && !data.length ? (
           <div>
             <div>No matching results.</div>

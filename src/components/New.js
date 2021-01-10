@@ -5,6 +5,7 @@ import "../styles/New.css";
 import { useFetch } from "../hooks/useFetch.js";
 import Infobox from "./Infobox.js";
 import Modal from "react-modal";
+import Loading from "./Loading.js";
 
 export default function New() {
   const auth = useAuth();
@@ -306,7 +307,7 @@ export default function New() {
               className="new-add-submit-button"
               disabled={loading}
             >
-              {loading ? "loading..." : "Submit"}
+              {loading ? <Loading /> : "Submit"}
             </button>
           </form>
           {msg && <Infobox msg={msg} />}

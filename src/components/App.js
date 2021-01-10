@@ -12,6 +12,7 @@ import User from "./User";
 import About from "./About";
 import Contact from "./Contact";
 import { useEffect } from "react";
+import Loading from "./Loading";
 
 function App() {
   useEffect(() => {
@@ -25,6 +26,9 @@ function App() {
       </header>
       <main>
         <Switch>
+          <Route path="/loading">
+            <Loading />
+          </Route>
           <Route path="/account">
             <Account />
           </Route>

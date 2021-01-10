@@ -3,6 +3,7 @@ import "../styles/Signup.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth";
 import Infobox from "./Infobox";
+import Loading from "./Loading";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -11,6 +12,7 @@ export default function Signup() {
   const [message, setMessage] = useState("");
   const [finished, setFinished] = useState(false);
   const auth = useAuth();
+  const [loading, setLoading] = useState(false);
 
   function usernameChanged(e) {
     setUsername(e.target.value);
@@ -25,6 +27,7 @@ export default function Signup() {
   }
 
   async function signupFormSubmitted(e) {
+    setLoading(true);
     e.preventDefault();
     setMessage("");
 
@@ -32,15 +35,18 @@ export default function Signup() {
       const res = await auth.signup(username, password, email);
       console.log(res);
       if (res.success) {
+        setLoading(false);
         setMessage("Signup was successful! Please go to login now.");
         setFinished(true);
       } else {
+        setLoading(false);
         console.log("Signup failed");
         res.res.error
           ? setMessage(res.res.error)
           : setMessage("Signup failed.");
       }
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   }
@@ -108,7 +114,10 @@ export default function Signup() {
             onChange={emailChanged}
           />
 
-          <button type="submit">Sign up</button>
+          {/* <button type="submit">Sign up</button> */}
+          <button disabled={loading} type="submit">
+            {loading ? <Loading /> : "Sign up"}
+          </button>
           {/* {message && <div>{message}</div>} */}
           <div>{message && <Infobox msg={message} />}</div>
         </form>
