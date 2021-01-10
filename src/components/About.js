@@ -7,7 +7,7 @@ export default function About() {
     <div className="about-grid">
       <h1>About</h1>
       <p>
-        MyLinkYourLink is a search engine which returns links submitted by
+        MyLink🔗YourLink is a search engine which returns links submitted by
         users. When submitting links we ask you to describe them and describe
         the overall theme and intend of the new entry. This way others can
         decide if it sounds interesting to them. And if they have a look at your
@@ -56,7 +56,7 @@ export default function About() {
       </p>
 
       <p>
-        MyLinkYourLink is not a direct competitor to existing search engines.
+        MyLink🔗YourLink is not a direct competitor to existing search engines.
         Rather, it is a complementary form of search powered by you and me.
       </p>
       <p>

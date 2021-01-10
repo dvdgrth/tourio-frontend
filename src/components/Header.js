@@ -18,7 +18,7 @@ export default function Header() {
         <div className="header-grid-left">
           {/* <img src="logo.png" alt="logo" className="header-logo" /> */}
           <Link to="/" className="header-name-title">
-            MyLinkYourLink
+            MyLink🔗YourLink
           </Link>
         </div>
         <div className="header-grid-right">
@@ -43,7 +43,7 @@ export default function Header() {
         <div className="header-grid-left">
           {/* <img src="logo.png" alt="logo" className="header-logo" /> */}
           <Link to="/" className="header-name-title">
-            MyLinkYourLink
+            MyLink🔗YourLink
           </Link>
         </div>
         <div className="header-grid-right">
