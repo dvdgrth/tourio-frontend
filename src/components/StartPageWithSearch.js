@@ -12,6 +12,13 @@ export default function StartPageWithSearch() {
   const history = useHistory();
 
   // useEffect(() => {
+  //   document.title = "MyLinkYourLink Search";
+  //   return () => {
+  //     document.title = "MyLinkYourLink";
+  //   };
+  // }, []);
+
+  // useEffect(() => {
   //   async function getData(q) {
   //     // const res = await fetch(`http://localhost:4000/tours?q=${q}`);
   //     // const res = await fetch(
@@ -56,10 +63,18 @@ export default function StartPageWithSearch() {
     }
 
     if (new URLSearchParams(location.search).get("all") === "true") {
+      document.title = "All - MyLinkYourLink Search";
       getAll();
     } else {
+      document.title = `${new URLSearchParams(location.search).get(
+        "q"
+      )} - MyLinkYourLink Search`;
       getData(new URLSearchParams(location.search).get("q"));
     }
+
+    return () => {
+      document.title = "MyLinkYourLink";
+    };
   }, [location.search]);
 
   // async function getAll(e) {

@@ -49,8 +49,14 @@ export default function Result() {
       // const res = await fetch(`http://localhost:4000/tours/${q}`);
       const data = await res.json();
       setData(data);
+      document.title =
+        data.title + " by " + data.author.username + " - MyLinkYourLink";
     }
     getData(id);
+
+    return () => {
+      document.title = "MyLinkYourLink";
+    };
   }, [id]);
 
   if (!data) {

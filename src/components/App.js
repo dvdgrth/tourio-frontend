@@ -11,14 +11,9 @@ import New from "./New";
 import User from "./User";
 import About from "./About";
 import Contact from "./Contact";
-import { useEffect } from "react";
 import Loading from "./Loading";
 
 function App() {
-  useEffect(() => {
-    document.title = "MyLinkYourLink";
-  }, []);
-
   return (
     <div className="App">
       <header>
