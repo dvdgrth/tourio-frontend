@@ -16,7 +16,9 @@ export default function Header() {
     return (
       <div className="header-grid">
         <div className="header-grid-left">
-          <Link to="/">MyLinkYourLink</Link>
+          <Link to="/" className="header-name-title">
+            MyLinkYourLink
+          </Link>
         </div>
         <div className="header-grid-right">
           <div className="profile-dropdown">
@@ -38,7 +40,9 @@ export default function Header() {
     return (
       <div className="header-grid">
         <div className="header-grid-left">
-          <Link to="/">MyLinkYourLink</Link>
+          <Link to="/" className="header-name-title">
+            MyLinkYourLink
+          </Link>
         </div>
         <div className="header-grid-right">
           <Link to="/login" className="login-signup-link">

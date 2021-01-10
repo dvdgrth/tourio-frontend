@@ -60,3 +60,8 @@
 .login-signup-link {
   margin: 0 10px;
 }
+
+.header-name-title {
+  font-size: 30px;
+  color: rgb(58, 58, 58);
+}
