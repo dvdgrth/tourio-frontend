@@ -38,6 +38,12 @@
 .result-title {
   margin: 0;
   font-weight: normal;
+  /* text-decoration: underline; */
+  font-size: 20px;
+}
+
+.result-summary {
+  font-size: 14px;
 }
 
 .result-date {
