@@ -4,4 +4,6 @@
   display: inline;
   /* background-color: aliceblue; */
   font-weight: bold;
+  /* box-sizing: border-box; */
+  /* margin-top: 3px; */
 }
