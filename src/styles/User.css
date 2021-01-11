@@ -1,7 +1,9 @@
 .user-links-grid {
   /* height: 100%; */
   display: grid;
-  gap: 15px;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+  /* grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
   padding: 10px;
+  max-width: 900px;
+  /* margin: 0 auto; */
 }

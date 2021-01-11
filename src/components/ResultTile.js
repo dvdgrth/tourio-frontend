@@ -46,7 +46,12 @@ export default function ResultTile({ data }) {
   const history = useHistory();
 
   function tileClicked(e) {
-    history.push(`/tours/${data._id}`);
+    // console.log(e.target.tagName);
+    if (e.target.tagName === "A") {
+      history.push(`/users/${data.author._id}`);
+    } else {
+      history.push(`/tours/${data._id}`);
+    }
   }
 
   return (

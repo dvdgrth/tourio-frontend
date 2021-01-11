@@ -2,11 +2,11 @@
   display: grid;
   /* border: 1px solid black; */
   padding: 2px 10px;
-  height: 200px;
+  /* height: 176px; */
   /* width: 250px; */
-  white-space: normal;
+  /* white-space: normal;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
   /* white-space: nowrap; */
 
   /* background: #fff; */
@@ -16,7 +16,8 @@
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
 
-  grid-template-rows: 15px 14px 16px auto auto 40px;
+  /* grid-template-rows: 15px 14px 16px auto auto 40px; */
+  /* justify-self: left; */
 }
 
 /* .result-tile-grid * { */
@@ -24,7 +25,8 @@
 .result-title,
 .result-summary {
   max-width: 100%;
-  /* white-space: wrap; */
+  max-height: 100%;
+  white-space: normal;
   overflow: hidden;
 
   text-overflow: ellipsis;
