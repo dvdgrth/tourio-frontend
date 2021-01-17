@@ -248,7 +248,7 @@ let col = "red";
 function ResultContent({ data, tab, setTab }) {
   function selectedTabContent() {
     if (tab === -1) {
-      return data.summary;
+      return data.title + "\n\n" + data.summary;
     } else {
       return data.links[tab].description;
     }
