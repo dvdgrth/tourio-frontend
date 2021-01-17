@@ -29,7 +29,7 @@ export default function Header() {
               <Link to={`/users/${auth.user["sub"]}`}>My links</Link>
               {/* </button> */}
               {/* <button> */}
-              <Link to="/account">My account</Link>
+              {/* <Link to="/account">My account</Link> */}
               {/* </button> */}
               <span onClick={logoutClicked}>Logout</span>
             </div>

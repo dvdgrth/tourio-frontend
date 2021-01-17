@@ -37,11 +37,11 @@ export default function User() {
   }
 
   return (
-    <div>
-      <h1>Name: {user.username}</h1>
-      <h2>Id: {user._id}</h2>
+    <div className="user-container">
+      <h1>{user.username}</h1>
+      {/* <h2>Id: {user._id}</h2> */}
 
-      <h2>All links from user:</h2>
+      <h2>All links from {user.username}:</h2>
       <div className="user-links-grid">
         {user.links &&
           user.links.map((link) => (
