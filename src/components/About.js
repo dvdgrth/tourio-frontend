@@ -39,13 +39,12 @@ export default function About() {
         shareable. This way we could skip or shorten the initial phase of a
         search session which can be quite cumbersome: suffering through the mud
         of never ending substandard web sites in search for the good ones, the
-        nuggets. Starting with the best finds of someone else could provide us
-        with a valuable starting point for our own search or with links we would
-        not have been able to find on our own. Probably, we would often still
-        want to search for ourselves but by using the suggestions of others we
-        could be more effective.
+        nuggets. Starting with the best finds of someone else could serve us as
+        a valuable starting point for our own search or provide us with links we
+        would not have been able to find on our own. Probably, we would often
+        still want to search for ourselves but by using the suggestions of
+        others we could be more effective.
       </p>
-
       <p>
         We should remember the adventurous, elegant spirit of the early web: An
         ocean of ressources, of sites, of space stations if you will -
@@ -55,9 +54,8 @@ export default function About() {
         the internet (ressources interconnected by links) is very much alive and
         well and isn't going anywhere. Let's bring the magic back. Let's build
         beautiful tours through the web. Let's create Hitchhiker's Guides to the
-        world wide web, with treasure maps to our favorite sites.
+        world wide web - with treasure maps to our favorite sites.
       </p>
-
       <p>
         MyLink🔗YourLink is not a direct competitor to existing search engines.
         Rather, it is a complementary form of search powered by you and me.
