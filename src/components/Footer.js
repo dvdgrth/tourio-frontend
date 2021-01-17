@@ -8,7 +8,7 @@ export default function Footer() {
       <div>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
-        <Link to="/impressum">Impressum</Link>
+        {/* <Link to="/impressum">Impressum</Link> */}
       </div>
     </div>
   );
