@@ -5,7 +5,7 @@ import StartPage from "./StartPage";
 // import Result from "./Result";
 import { Switch, Route } from "react-router-dom";
 import Login from "./Login";
-import Account from "./Account.js";
+// import Account from "./Account.js";
 import Signup from "./Signup";
 import New from "./New";
 import User from "./User";
