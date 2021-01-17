@@ -1,7 +1,24 @@
+.result-tile-ticket {
+  display: grid;
+  padding: 2px 10px;
+  border-radius: 2px;
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  grid-template-columns: 1fr auto;
+  max-height: 200px;
+  background-color: wheat;
+  gap: 10px;
+
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
 .result-tile-grid {
   display: grid;
+  max-height: 200px;
   /* border: 1px solid black; */
-  padding: 2px 10px;
+  /* padding: 2px 10px; */
   /* height: 176px; */
   /* width: 250px; */
   /* white-space: normal;
@@ -10,11 +27,11 @@
   /* white-space: nowrap; */
 
   /* background: #fff; */
-  border-radius: 2px;
+  /* border-radius: 2px; */
   /* display: inline-block; */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  cursor: pointer;
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+  /* transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); */
+  /* cursor: pointer; */
 
   /* grid-template-rows: 15px 14px 16px auto auto 40px; */
   /* justify-self: left; */
@@ -32,9 +49,11 @@
   text-overflow: ellipsis;
 }
 
-.result-tile-grid:hover {
+.result-tile-ticket:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  background-color: var(--hover-color);
+  /* background-color: var(--hover-color); */
+  background-color: rgb(233, 210, 167);
+  outline: 3px solid tomato;
 }
 
 .result-title {
@@ -52,18 +71,21 @@
   text-align: right;
   font-size: 12px;
   color: darkgray;
+  color: black;
 }
 
 .result-linkcount {
   text-align: right;
   font-size: 12px;
   color: rgb(95, 95, 95);
+  color: black;
 }
 
 .result-tile-rating {
   text-align: right;
   font-size: 12px;
   color: rgb(95, 95, 95);
+  color: black;
   /* justify-self: flex-end; */
   align-self: end;
 }
@@ -76,8 +98,26 @@
   text-align: right;
   font-size: 12px;
   color: darkgray;
+  color: black;
 }
 
 .result-tile-author-name:hover {
   color: rgb(138, 138, 138);
+  color: black;
+}
+
+.ticket-title {
+  font-family: "Times New Roman", Times, serif;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  justify-self: center;
+  /* align-self: center; */
+  text-align: center;
+  border-left: 2px dotted rgb(167, 150, 120);
+  color: rgb(172, 152, 115);
+  font-weight: bolder;
+  font-size: 22px;
+  padding-left: 10px;
+
+  text-shadow: 0px 1px 1px rgba(255, 255, 2555, 0.75), 0px -1px 1px;
 }

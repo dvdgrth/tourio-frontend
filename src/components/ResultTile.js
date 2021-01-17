@@ -56,28 +56,33 @@ export default function ResultTile({ data }) {
 
   return (
     // <Link to={`/tours/${data._id}`} style={{ textDecoration: "none" }}>
-    <div className="result-tile-grid" onClick={tileClicked}>
-      <div className="result-linkcount">
-        {data.links.length}
-        {data.links.length > 1 ? " Links" : " Link"}
-      </div>
-      <div className="result-date">
-        {new Date(data.updatedAt).toLocaleDateString()}
-      </div>
-      <div className="result-tile-author-name">
-        <Link to={`/users/${data.author._id}`}>{data.author.username}</Link>
-      </div>
-      <h2 className="result-title">{data.title}</h2>
-      <div className="result-summary">{data.summary}</div>
 
-      <div className="result-tile-rating">
-        {/* Rating: {calculateRating(data.ratings)} */}
-        <RatingWidget ratings={data.ratings} />
-        <div className="result-tile-rating-votes">
-          ({data.ratings.length} votes)
+    <div className="result-tile-ticket" onClick={tileClicked}>
+      <div className="result-tile-grid">
+        <div className="result-linkcount">
+          {data.links.length}
+          {data.links.length > 1 ? " Links" : " Link"}
+        </div>
+        <div className="result-date">
+          {new Date(data.updatedAt).toLocaleDateString()}
+        </div>
+        <div className="result-tile-author-name">
+          <Link to={`/users/${data.author._id}`}>{data.author.username}</Link>
+        </div>
+        <h2 className="result-title">{data.title}</h2>
+        <div className="result-summary">{data.summary}</div>
+
+        <div className="result-tile-rating">
+          {/* Rating: {calculateRating(data.ratings)} */}
+          <RatingWidget ratings={data.ratings} />
+          <div className="result-tile-rating-votes">
+            ({data.ratings.length} votes)
+          </div>
         </div>
       </div>
+      <div className="ticket-title">TOUR</div>
     </div>
+
     // </Link>
   );
 }

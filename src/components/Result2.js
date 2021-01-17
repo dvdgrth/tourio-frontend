@@ -69,51 +69,56 @@ export default function Result2() {
       <ResultHeader data={data} setTab={setTab} />
       <div className="result-grid">
         <ResultContent data={data} tab={tab} setTab={setTab} />
-        <div className="electro-grid">
-          <div className="electro">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <div className="wire"></div>
-          <div className="electro">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <div className="wire"></div>
-          <div className="electro">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <div className="wire"></div>
-          <div className="electro">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <div className="wire"></div>
-          <div className="electro">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <div className="wire"></div>
-          <div className="electro">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
-
+        <Electro />
         <ResultNav data={data} tab={tab} setTab={setTab} />
+      </div>
+    </div>
+  );
+}
+
+function Electro() {
+  return (
+    <div className="electro-grid">
+      <div className="electro">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div className="wire"></div>
+      <div className="electro">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div className="wire"></div>
+      <div className="electro">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div className="wire"></div>
+      <div className="electro">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div className="wire"></div>
+      <div className="electro">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div className="wire"></div>
+      <div className="electro">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
   );
@@ -146,9 +151,14 @@ function ResultHeader({ data, setTab }) {
 
   return (
     <div className="result-header">
-      <h2 className="hitch">
-        A hitchhiker's guide to the world wide web TOUR:
-      </h2>
+      <div className="result-header-top-line">
+        <div className="led-red"></div>
+        <div className="led-green"></div>
+        <h2 className="hitch">
+          A hitchhiker's guide to the world wide web TOUR:
+        </h2>
+      </div>
+
       <h1 className="result-title-clickable" onClick={() => setTab(-1)}>
         {data.title}
       </h1>
