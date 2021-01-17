@@ -1,9 +1,19 @@
+.rating-picker-container {
+  display: grid;
+  /* grid-template-columns: 1fr; */
+  /* gap: 10px; */
+  /* height: 10px; */
+}
+
 .rating-picker-range {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: 10px;
-  border: 1px solid var(--border-color);
+  /* grid-template-rows: 10px; */
+  border: 1px solid rgb(27, 27, 27);
   gap: 1px;
+  height: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5),
+    inset 5px 5px 8px rgba(0, 0, 0, 0.5);
 }
 
 .rating-picker-range > div {
@@ -18,8 +28,10 @@
 
 .rating-picker-selected {
   background-color: var(--border-color-dark);
+  box-shadow: 0 0 100px #d3c4ba;
 }
 
 .rating-picker-mouseover {
   background-color: var(--hover-color-dark);
+  box-shadow: 0 0 50px #d6d6d6;
 }

@@ -2,7 +2,7 @@ import "../styles/App.css";
 import Footer from "./Footer";
 import Header from "./Header";
 import StartPage from "./StartPage";
-import Result from "./Result";
+// import Result from "./Result";
 import { Switch, Route } from "react-router-dom";
 import Login from "./Login";
 import Account from "./Account.js";
@@ -12,6 +12,7 @@ import User from "./User";
 import About from "./About";
 import Contact from "./Contact";
 import Loading from "./Loading";
+import Result2 from "./Result2";
 
 function App() {
   return (
@@ -46,7 +47,7 @@ function App() {
             <New />
           </Route>
           <Route path="/tours/:id">
-            <Result />
+            <Result2 />
           </Route>
           <Route path="/users/:id">
             <User />

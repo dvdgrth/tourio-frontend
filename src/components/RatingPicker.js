@@ -80,91 +80,71 @@ export default function RatingPicker({ userRatingValue, tourId }) {
   }
 
   return (
-    <div>
+    <div className="rating-picker-container">
       <div className="rating-picker-range" onMouseLeave={mouseLeave}>
         <div
           data-rating="1"
           onClick={ratingClicked}
           onMouseOver={mouseOver}
           className={getClassNames(1)}
-        >
-          {/* 1 */}
-        </div>
+        ></div>
         <div
           data-rating="2"
           onClick={ratingClicked}
           onMouseOver={mouseOver}
           className={getClassNames(2)}
-        >
-          {/* 2 */}
-        </div>
+        ></div>
         <div
           data-rating="3"
           onClick={ratingClicked}
           onMouseOver={mouseOver}
           className={getClassNames(3)}
-        >
-          {/* 3 */}
-        </div>
+        ></div>
         <div
           data-rating="4"
           onClick={ratingClicked}
           onMouseOver={mouseOver}
           className={getClassNames(4)}
-        >
-          {/* 4 */}
-        </div>
+        ></div>
         <div
           data-rating="5"
           onClick={ratingClicked}
           onMouseOver={mouseOver}
           className={getClassNames(5)}
-        >
-          {/* 5 */}
-        </div>
+        ></div>
         <div
           data-rating="6"
           onClick={ratingClicked}
           onMouseOver={mouseOver}
           className={getClassNames(6)}
-        >
-          {/* 6 */}
-        </div>
+        ></div>
         <div
           data-rating="7"
           onClick={ratingClicked}
           onMouseOver={mouseOver}
           className={getClassNames(7)}
-        >
-          {/* 7 */}
-        </div>
+        ></div>
         <div
           data-rating="8"
           onClick={ratingClicked}
           onMouseOver={mouseOver}
           className={getClassNames(8)}
-        >
-          {/* 8 */}
-        </div>
+        ></div>
         <div
           data-rating="9"
           onClick={ratingClicked}
           onMouseOver={mouseOver}
           className={getClassNames(9)}
-        >
-          {/* 9 */}
-        </div>
+        ></div>
         <div
           data-rating="10"
           onClick={ratingClicked}
           onMouseOver={mouseOver}
           className={getClassNames(10)}
-        >
-          {/* 10 */}
-        </div>
-        {/* <div>rating</div> */}
+        ></div>
       </div>
-      {msg && <Infobox msg={msg} />}
+      <div>{msg ? <Infobox msg={msg} /> : <div></div>}</div>
+      {/* <div>{msg ? msg : "test"}</div> */}
     </div>
   );
 }
