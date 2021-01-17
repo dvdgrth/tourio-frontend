@@ -25,3 +25,9 @@
   background-color: var(--hover-color);
   cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+  .searchbar-add-row {
+    grid-template-columns: 1fr;
+  }
+}

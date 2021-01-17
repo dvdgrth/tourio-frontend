@@ -3,3 +3,11 @@
   display: grid;
   grid-template-rows: 4fr 2fr 6fr;
 }
+
+@media only screen and (max-width: 600px) {
+  .startpage-grid {
+    grid-template-rows: 1fr 1fr 1fr;
+    /* justify-items: center;
+    align-items: center; */
+  }
+}

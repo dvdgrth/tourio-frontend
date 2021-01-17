@@ -21,7 +21,7 @@ export default function Header() {
             MyLink🔗YourLink
           </Link>
         </div>
-        <div className="header-grid-right">
+        <div className="header-grid-right header-grid-right-one">
           <div className="profile-dropdown">
             <button className="profile-dropdown-button">Profile</button>
             <div className="profile-dropdown-menu">
@@ -46,7 +46,7 @@ export default function Header() {
             MyLink🔗YourLink
           </Link>
         </div>
-        <div className="header-grid-right">
+        <div className="header-grid-right header-grid-right-two">
           <Link to="/login" className="login-signup-link">
             Login
           </Link>

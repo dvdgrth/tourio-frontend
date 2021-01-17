@@ -36,3 +36,14 @@
   filter: invert(43%) sepia(53%) saturate(16%) hue-rotate(325deg)
     brightness(98%) contrast(90%);
 }
+
+@media only screen and (max-width: 600px) {
+  .search-bar {
+    padding: 20px 10px;
+    font-size: large;
+  }
+
+  .search-form {
+    grid-template-columns: auto 64px;
+  }
+}

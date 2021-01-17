@@ -165,3 +165,39 @@
 .new-down-arrow {
   right: 82px;
 }
+
+@media only screen and (max-width: 700px) {
+  .new-container > div {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .new-container h1 {
+    margin: 0;
+  }
+
+  .new-link-section:hover,
+  .new-link-section:focus {
+    transform: translateX(0px);
+  }
+
+  .new-link-section > label {
+    font-size: 12px;
+  }
+
+  .new-link-section {
+    /* display: grid; */
+    /* padding: 10px; */
+    gap: 6px;
+
+    grid-template-areas:
+      "index "
+      "linkLabel"
+      "link"
+      "descriptionLabel"
+      "description "
+      "infobox";
+
+    grid-template-columns: 1fr;
+  }
+}

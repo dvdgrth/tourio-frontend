@@ -68,3 +68,43 @@
 .header-logo {
   /* height: 30px; */
 }
+
+@media only screen and (max-width: 600px) {
+  .header-grid {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .header-grid-left {
+    justify-self: center;
+  }
+
+  .header-grid-right {
+    justify-self: normal;
+    display: grid;
+  }
+
+  .header-grid-right-one {
+  }
+  .header-grid-right-two {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .profile-dropdown,
+  .profile-dropdown-menu,
+  .profile-dropdown-button {
+    width: 100%;
+  }
+
+  .profile-dropdown {
+    position: relative;
+  }
+
+  .profile-dropdown-menu {
+    display: none;
+    left: 0;
+    position: absolute;
+  }
+}
