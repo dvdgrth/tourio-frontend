@@ -228,8 +228,9 @@ function ResultNav({ data, tab, setTab }) {
           className={tab === -1 ? "link-selected" : ""}
           onClick={handleClick.bind(-1)}
         >
-          <div className="link-grid-i">0</div>
-          <div className="tour-summary">{data.title}</div>
+          <div className="link-grid-i"></div>
+          {/* <div className="tour-summary">{data.title}</div> */}
+          <div className="tour-summary">Summary</div>
           {/* <div></div> */}
         </div>
 
@@ -259,7 +260,7 @@ let col = "red";
 function ResultContent({ data, tab, setTab }) {
   function selectedTabContent() {
     if (tab === -1) {
-      return data.title + "\n\n" + data.summary;
+      return data.title + "\n-----\n" + data.summary;
     } else {
       return data.links[tab].description;
     }

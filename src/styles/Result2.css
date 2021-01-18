@@ -104,8 +104,12 @@
 }
 
 .tour-summary {
+  overflow: hidden;
+  /* text-decoration: underline; */
+  /* padding: 0 10px; */
   padding: 10px;
   text-align: center;
+  font-weight: bold;
 }
 
 .link-selected {
