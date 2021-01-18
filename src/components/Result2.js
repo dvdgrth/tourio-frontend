@@ -214,6 +214,7 @@ function ResultNav({ data, tab, setTab }) {
         >
           {"<"}
         </button>
+        <span className="result-nav-i">{tab + 1}</span>
         <button
           className="result-nav-button"
           onClick={navNextClicked}
