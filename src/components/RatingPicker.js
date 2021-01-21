@@ -14,7 +14,7 @@ export default function RatingPicker({ userRatingValue, tourId }) {
   const history = useHistory();
 
   async function ratingClicked(e) {
-    console.log(e.target.dataset.rating);
+    // console.log(e.target.dataset.rating);
 
     if (!auth.user) {
       setMsg("You must be logged in to vote.");
@@ -43,7 +43,7 @@ export default function RatingPicker({ userRatingValue, tourId }) {
       } catch (error) {
         setMsg("Rating failed.");
       }
-      console.log(response);
+      // console.log(response);
       // const responseBody = await response.json();
       // setLoading(false);
       // setMsg("Rating failed:\n" + JSON.stringify(responseBody));
@@ -51,7 +51,7 @@ export default function RatingPicker({ userRatingValue, tourId }) {
   }
 
   function mouseOver(e) {
-    console.log(e.target.dataset.rating);
+    // console.log(e.target.dataset.rating);
     setMouseOverRating(e.target.dataset.rating);
 
     // if (!auth.user) {

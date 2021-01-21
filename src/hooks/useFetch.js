@@ -6,15 +6,16 @@ export function useFetch() {
 
   const fetchWithToken = async (url, data, method = "POST") => {
     if (!token) {
-      console.log("need to refresh token...");
+      // console.log("need to refresh token...");
       token = await auth.refresh();
       if (!token) {
-        console.log("refresh failed");
+        // console.log("refresh failed");
         //TODO: probably retry or logout/ask to login again
-        return token;
+        auth.logout();
+        return;
       }
-      console.log("refresh successful, new token:");
-      console.log(token);
+      // console.log("refresh successful, new token:");
+      // console.log(token);
     }
 
     try {
@@ -28,18 +29,18 @@ export function useFetch() {
       });
       // const responseText = await response.text();
       if (response.ok) {
-        console.log("success");
-        console.log(response);
+        // console.log("success");
+        // console.log(response);
         return response;
 
         // history
       } else {
         // Try refreshing the token
-        console.log("try refreshing the token...");
+        // console.log("try refreshing the token...");
         token = await auth.refresh();
         if (!token) {
-          console.log("failed");
-          console.log(response);
+          // console.log("failed");
+          // console.log(response);
           return response;
         } else {
           // try once more
@@ -53,18 +54,18 @@ export function useFetch() {
           });
           // const responseText = await response.text();
           if (response.ok) {
-            console.log("success");
-            console.log(response);
+            // console.log("success");
+            // console.log(response);
             return response;
           } else {
-            console.log("failed");
-            console.log(response);
+            // console.log("failed");
+            // console.log(response);
             return response;
           }
         }
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return;
     }
   };

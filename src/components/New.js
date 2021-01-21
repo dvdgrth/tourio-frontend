@@ -37,13 +37,13 @@ export default function New() {
 
   useEffect(() => {
     if (location.state && location.state.data) {
-      console.log(location.state.data);
+      // console.log(location.state.data);
       setData(true);
       setTitle(location.state.data.title);
       setSummary(location.state.data.summary);
       setLinks(location.state.data.links);
     } else {
-      console.log("no data");
+      // console.log("no data");
       setData(false);
     }
   }, [location.state]);

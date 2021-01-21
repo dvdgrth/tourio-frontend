@@ -19,7 +19,7 @@ export default function User() {
       );
 
       const resJson = await res.json();
-      console.log(resJson);
+      // console.log(resJson);
       if (res.ok) {
         setUser(resJson);
         document.title = resJson.username + " - MyLinkYourLink User";

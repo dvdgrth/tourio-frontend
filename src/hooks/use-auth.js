@@ -76,15 +76,15 @@ function useProvideAuth() {
       );
       if (response.ok) {
         const r = await response.json();
-        console.log(r);
+        // console.log(r);
         return { success: true, res: r };
       } else {
         const r = await response.json();
-        console.log(r);
+        // console.log(r);
         return { success: false, res: r };
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return { success: false, res: error };
     }
   };
@@ -121,7 +121,7 @@ function useProvideAuth() {
         return false;
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return false;
     }
   };
@@ -138,20 +138,20 @@ function useProvideAuth() {
           credentials: "include",
         }
       );
-      console.log(res);
+      // console.log(res);
       let newToken;
       if (res.ok) {
         newToken = await res.json();
         newToken = newToken.token;
-        console.log(JSON.stringify(newToken));
-        console.log(newToken);
+        // console.log(JSON.stringify(newToken));
+        // console.log(newToken);
         setToken(newToken);
         return newToken;
       } else {
         return false;
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return false;
     }
   };

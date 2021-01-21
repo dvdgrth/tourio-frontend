@@ -13,15 +13,16 @@ export default function New() {
     e.preventDefault();
     let token = auth.token;
     if (!token) {
-      console.log("need to refresh token...");
+      // console.log("need to refresh token...");
       token = await auth.refresh();
       if (!token) {
-        console.log("refresh failed");
+        // console.log("refresh failed");
         //TODO: probably retry or logout/ask to login again
+        auth.logout();
         return;
       }
-      console.log("refresh successful, new token:");
-      console.log(token);
+      // console.log("refresh successful, new token:");
+      // console.log(token);
     }
     let data = {
       title: title,
@@ -47,16 +48,16 @@ export default function New() {
       );
       const responseText = await response.text();
       if (response.ok) {
-        console.log("success");
-        console.log(responseText);
+        // console.log("success");
+        // console.log(responseText);
         // history
       } else {
         // Try refreshing the token
-        console.log("need to refresh token...");
+        // console.log("need to refresh token...");
         token = await auth.refresh();
         if (!token) {
-          console.log("failed");
-          console.log(responseText);
+          // console.log("failed");
+          // console.log(responseText);
         } else {
           // try one more
           const response = await fetch("http://localhost:4000/tours", {
@@ -68,18 +69,18 @@ export default function New() {
             },
             body: JSON.stringify(data),
           });
-          const responseText = await response.text();
+          // const responseText = await response.text();
           if (response.ok) {
-            console.log("success");
-            console.log(responseText);
+            // console.log("success");
+            // console.log(responseText);
           } else {
-            console.log("failed");
-            console.log(responseText);
+            // console.log("failed");
+            // console.log(responseText);
           }
         }
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return;
     }
   }

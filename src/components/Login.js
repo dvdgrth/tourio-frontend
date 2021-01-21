@@ -33,7 +33,7 @@ export default function Login() {
         // history.goBack();
       } else {
         setLoading(false);
-        console.log("Login failed");
+        // console.log("Login failed");
         setMessage("Login failed");
       }
       // const response = await fetch("http://localhost:4000/login", {
@@ -61,7 +61,7 @@ export default function Login() {
       //   setMessage("Login failed");
       // }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 

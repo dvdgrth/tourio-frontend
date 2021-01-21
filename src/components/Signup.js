@@ -33,21 +33,21 @@ export default function Signup() {
 
     try {
       const res = await auth.signup(username, password, email);
-      console.log(res);
+      // console.log(res);
       if (res.success) {
         setLoading(false);
         setMessage("Signup was successful! Please go to login now.");
         setFinished(true);
       } else {
         setLoading(false);
-        console.log("Signup failed");
+        // console.log("Signup failed");
         res.res.error
           ? setMessage(res.res.error)
           : setMessage("Signup failed.");
       }
     } catch (error) {
       setLoading(false);
-      console.log(error);
+      // console.log(error);
     }
   }
 

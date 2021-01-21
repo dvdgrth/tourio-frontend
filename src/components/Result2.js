@@ -135,7 +135,7 @@ function ResultHeader({ data, setTab }) {
     if (!auth.user || !data) {
       return;
     }
-    console.log(data);
+    // console.log(data);
     let userRating = data.ratings.find((rating) => {
       if (!rating.author) return false;
       return rating.author._id === auth.user["sub"];
